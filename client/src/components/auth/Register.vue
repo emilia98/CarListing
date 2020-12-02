@@ -85,6 +85,14 @@ export default {
   methods: {
     async registerHandler() {
       try {
+        // let formData = {
+        //   username: this.register.username,
+        //   email: this.register.email,
+        //   password: this.register.password,
+        //   fullName: this.register.fullName
+        // };
+
+        // let response = await this.$store.dispatch('register', formData);
         let response = await this.$http.post("/auth/register", this.register);
         let data = response.data;
 

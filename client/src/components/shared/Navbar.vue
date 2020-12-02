@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <router-link class="navbar-brand" to="/">Navbar</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -21,12 +21,12 @@
             </button>
           </li>
           <li class="nav-item" v-if="isLoggedIn">
-            <a class="nav-link"> Logout</a>
+            <a class="nav-link" @click="logout" > Logout</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="!isLoggedIn">
             <router-link to="/auth/login" class="nav-link">Login</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="!isLoggedIn">
             <router-link to="/auth/register" class="nav-link">Register</router-link>
           </li>
         </ul>
@@ -34,3 +34,20 @@
     </div>
   </nav>
 </template>
+<script>
+export default {
+  computed: {
+    isLoggedIn: function() {
+      return this.$store.getters.isLoggedIn;
+    } 
+  },
+  methods: {
+    logout: function() {
+      this.$store.dispatch('logout')
+      .then(() => {
+        this.$router.push('/auth/login');
+      });
+    }
+  }
+}
+</script>

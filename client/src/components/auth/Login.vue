@@ -61,8 +61,13 @@ export default {
   methods: {
     async loginHandler() {
       try {
-        let response = await this.$http.post("/auth/login", this.login);
+        let input = this.login.input;
+        let password = this.login.password;
+        let response = await this.$store.dispatch('login', { input, password })
+        // let response = await this.$http.post("/auth/login", this.login);
         let data = response.data;
+
+        console.log(data);
 
         if (data.errors) {
           this.formErrors = data.errors;
@@ -70,11 +75,12 @@ export default {
         }
 
         if (data.successMessage) {
-          localStorage.setItem("cl_token", data.accessToken);
+          // localStorage.setItem("cl_token", data.accessToken);
           sweetalert("Success", data.successMessage, "success");
           this.$router.push('/');
         }
       } catch (err) {
+        console.log(err);
         let errorMessage = err?.response?.data?.errorMessage ?? "Error";
         sweetalert(errorMessage,"", "error");
       }

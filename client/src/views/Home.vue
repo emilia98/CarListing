@@ -1,12 +1,10 @@
 <template>
   <div>
-    <Navbar />
     
   </div>
 </template>
 <script>
 // import VueJwtDecode from "vue-jwt-decode";
-import Navbar from '../components/shared/Navbar';
 export default {
   data() {
     return {
@@ -39,7 +37,6 @@ export default {
     }
   },
   components: {
-      Navbar
   }
 };
 </script>

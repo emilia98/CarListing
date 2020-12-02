@@ -4,6 +4,7 @@ import router from './router';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.css";
 import "./main.css";
+import store from './store';
 
 const base = axios.create({
   baseURL: 'http://localhost:3000'
@@ -19,5 +20,6 @@ if (token) {
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
