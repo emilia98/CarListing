@@ -23,8 +23,8 @@
         </p>
         <div class="mt-5 mb-5 actions" v-if="isLoggedIn">
             <button class="btn btn-primary">Buy</button>
-            <router-link :to="`/car/update/${car.id}`" class="btn btn-info">Edit</router-link>
-            <button class="btn btn-danger">Delete</button>
+            <router-link :to="`/car/update/${car.id}`" class="btn btn-info" v-if="isAuthor">Edit</router-link>
+            <button class="btn btn-danger" v-if="isAuthor">Delete</button>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
 </template>
 <script>
 export default {
-  props: ["car"],
+  props: ["car", "isAuthor" ],
   computed: {
       isLoggedIn: function() {
           return this.$store.getters.isLoggedIn;

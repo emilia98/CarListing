@@ -21,9 +21,20 @@ export default {
     getById: async (req, res) => {
         let carId = req.params.id;
         let car = await getCar(carId, res);
+        
+        let currentUserId = req.userId;
+        let carUserId = car.UserId;
+
+        
+
+        car.isAuthor = currentUserId === carUserId;
+
+        console.log(car.isAuthor)
+        console.log(currentUserId, carUserId)
 
         return res.status(200).json({
-            car: car
+            car: car,
+            isAuthor: currentUserId === carUserId
         });
     },
     createCar: async (req, res) => {
