@@ -25,13 +25,6 @@ export default {
         let currentUserId = req.userId;
         let carUserId = car.UserId;
 
-        
-
-        car.isAuthor = currentUserId === carUserId;
-
-        console.log(car.isAuthor)
-        console.log(currentUserId, carUserId)
-
         return res.status(200).json({
             car: car,
             isAuthor: currentUserId === carUserId
@@ -95,6 +88,10 @@ export default {
         let carId = req.params.id;
         let car = await getCar(carId, res);
 
+        if (car == null) {
+            return;
+        }
+
         let currentUserId = req.userId;
         let carUserId = car.UserId;
 
@@ -112,6 +109,10 @@ export default {
         let carId = req.params.id;
         let car = await getCar(carId, res);
 
+        if (car == null) {
+            return;
+        }
+
         let currentUserId = req.userId;
         let carUserId = car.UserId;
 
@@ -121,15 +122,21 @@ export default {
             });
         }
         
-
-        console.log(req.userId, car.UserId)
-
-        // console.log(car)
-
-
+        try {
+            await Car.destroy({
+                where: {
+                    id: carId
+                }
+            });
+        } catch (err) {
+            console.warn(err);
+            return res.status(500).json({
+                errorMessage: 'An error occurred while deleting a car!'
+            });
+        }
         
         res.status(200).json({
-            'message': 'Successfully deleted car'
+            'successMessage': 'Successfully deleted car'
         })
     }
 };

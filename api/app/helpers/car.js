@@ -13,9 +13,11 @@ export const getCar = async (carId, res) => {
     }
 
     if (car == null) {
-        return res.status(404).json({
+        res.status(404).json({
             errorMessage: 'Car not found!'
         });
+
+        return null;
     };
 
     return car;
