@@ -1,43 +1,37 @@
 <template>
-  <div>
-    
+  <div class="container mt-5">
+    <h1 class="text-center display-4 mb-5">Welcome to CarListing App</h1>
+    <div class="row">
+      <div v-for="car in cars" :key="car.id" class="col-md-3">
+        <CarCard :car="car"/>
+      </div>
+    </div>
   </div>
 </template>
 <script>
-// import VueJwtDecode from "vue-jwt-decode";
+import sweetalert from "sweetalert";
+import CarCard from "../components/cars/CarCard";
+
 export default {
   data() {
     return {
-      user: {}
+      cars: [],
     };
   },
-
-  methods: {
-      /*
-    getUserDetails() {
-      let token = localStorage.getItem("jwt");
-      let decoded = VueJwtDecode.decode(token);
-      this.user = decoded;
-    },*/
-   /* logUserOut() {
-      localStorage.removeItem("jwt");
-      this.$router.push("/");
-    } */
-  },
   async created() {
-    // this.getUserDetails();
-
     try {
-        let response = await this.$http.get("/car");
+      let response = await this.$http.get("/car");
 
-        console.log()
-        console.log(response.data.cars);
-    } catch(err) {
-        console.log(err);
+      if (response?.data?.cars) {
+        this.cars = response.data.cars;
+      }
+    } catch (err) {
+      sweetalert("Error", err, "error");
     }
   },
   components: {
-  }
+    CarCard,
+  },
 };
 </script>
 <style scoped></style>

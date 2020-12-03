@@ -3,3 +3,7 @@
     padding: 30px 0;
     text-transform: uppercase;
 }
+
+.badge-custom {
+    font-size: 1rem;
+}

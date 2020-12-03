@@ -16,9 +16,9 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item" v-if="isLoggedIn">
-            <button class="btn btn-primary nav-link text-light mr-3">
+            <router-link class="btn btn-primary nav-link text-light mr-3" to='/car/new'>
               New Car
-            </button>
+            </router-link>
           </li>
           <li class="nav-item" v-if="isLoggedIn">
             <a class="nav-link" @click="logout" > Logout</a>

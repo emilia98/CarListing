@@ -57,8 +57,8 @@ export default {
         }
 
         if (Object.keys(errors).length > 0) {
-            return res.status(503).json({
-                formErrors: errors
+            return res.status(200).json({
+                errors: errors
             });
         }
 
@@ -76,7 +76,7 @@ export default {
         }
 
         res.status(200).json({
-            'message': 'Successfully created a new car!',
+            'successMessage': 'Successfully created a new car!',
             car: car
         })
     },
