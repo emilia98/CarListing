@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <img v-if="car.image === null" class="card-img-top" src="https://blog.nscsports.org/wp-content/uploads/2014/10/default-img.gif" alt="no image provided" />
-    <img v-if="car.image" class="card-img-top" src="car.image" alt="image car :car.id" />
+    <img v-if="car.image" class="card-img-top" src="car.image" :alt="`image car ${car.id}`" />
     <div class="card-body">
       <h5 class="card-title">{{car.brand}} {{car.model}}</h5>
       <div class="card-text">

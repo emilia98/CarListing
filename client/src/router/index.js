@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import Login from '../views/auth/Login.vue';
 import Register from '../views/auth/Register.vue';
 import CreateCar from '../views/cars/CreateCar.vue';
+import ViewCar from '../views/cars/ViewCar.vue';
 import store from '../store';
 
 Vue.use(VueRouter);
@@ -37,6 +38,11 @@ const routes = [
         meta: {
             requiresAuth: true
         }
+    },
+    {
+        path: '/car/:id',
+        name: 'getCarById',
+        component: ViewCar,
     }
 ];
 

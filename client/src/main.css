@@ -7,3 +7,23 @@
 .badge-custom {
     font-size: 1rem;
 }
+
+.view-car img {
+    width: 100%;
+}
+
+p {
+    margin: 5px 0 !important;
+}
+
+.view-car p {
+    font-size: 1.125rem;
+}
+
+.view-car .value {
+    font-weight: bold;
+}
+
+.view-car .actions > * {
+    margin: 5px;
+}
