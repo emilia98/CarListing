@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <router-link class="navbar-brand" to="/">Navbar</router-link>
+      <router-link class="navbar-brand" to="/">CarListing App</router-link>
       <button
         class="navbar-toggler"
         type="button"
